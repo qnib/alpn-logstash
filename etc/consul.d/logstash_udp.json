@@ -1,0 +1,13 @@
+{
+  "services": [
+    {
+        "id": "ls-udp",
+        "name": "ls-udp",
+        "port": 55514,
+        "checks": [{
+            "script": "nmap 127.0.0.1 -sU -PN -p 55514 | grep open",
+            "interval": "10s"
+        }]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "services": [
+    {
+        "id": "logstash",
+        "name": "logstash",
+        "checks": [{
+            "script": "supervisorctl status logstash | grep RUNNING",
+            "interval": "10s"
+        }]
+    }
+  ]
+}
