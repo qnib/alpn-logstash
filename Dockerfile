@@ -1,8 +1,11 @@
 FROM qnib/alpn-jre8
 
 ARG LOGSTASH_VER=2.4.0
-RUN wget -qO - https://download.elastic.co/logstash/logstash/logstash-${LOGSTASH_VER}.tar.gz |tar xfz - -C /opt/ \
+ARG LOGSTASH_URL=https://download.elastic.co/logstash/logstash
+RUN wget -qO - ${LOGSTASH_URL}/logstash-${LOGSTASH_VER}.tar.gz |tar xfz - -C /opt/ \
  && mv /opt/logstash-${LOGSTASH_VER} /opt/logstash \
+ && echo
+RUN echo \
  && /opt/logstash/bin/logstash-plugin install \
        logstash-codec-oldlogstashjson \
        logstash-input-elasticsearch \
